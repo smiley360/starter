@@ -12,5 +12,13 @@ RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
 EXPOSE 3000
 
+RUN touch $HOME/.bashrc
+
+RUN echo "alias ll='ls -alF'" >> $HOME/.bashrc
+RUN echo "alias la='ls -A'" >> $HOME/.bashrc
+RUN echo "alias l='ls -CF'" >> $HOME/.bashrc
+RUN echo "alias q='exit'" >> $HOME/.bashrc
+RUN echo "alias c='clear'" >> $HOME/.bashrc
+
 # Configure the main process to run when running the image
 CMD ["rails", "server", "-b", "0.0.0.0"]
