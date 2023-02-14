@@ -15,7 +15,8 @@ if [ ! -f /myapp/db.created ]; then
   echo "calling into db:migrate"
   rails db:migrate RAILS_ENV=development
   sleep 10
-  rails runner "Article.create(title: 'Hello Rails and Docker', body: 'I am on Rails, Postgres and Docker!')"
+  rails runner "Article.create(title: 'Hello Rails and Docker', body: 'I am on Rails, Postgres and Docker')"
+  rails runner "Article.create(title: 'This is my 2nd title', body: 'I am happy about that')"
   #rails runner "Article.save"
 fi
 
