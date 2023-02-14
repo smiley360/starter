@@ -5,7 +5,7 @@ set -e
 rm -f /myapp/tmp/pids/server.pid
 
 echo "sleep for waiting for postgres to up"
-sleep 25
+sleep 35
 echo "done sleeping"
 if [ ! -f /myapp/db.created ]; then
   echo "calling into db:create"
@@ -16,7 +16,7 @@ if [ ! -f /myapp/db.created ]; then
   rails db:migrate RAILS_ENV=development
   sleep 10
   rails runner "Article.create(title: 'Hello Rails and Docker', body: 'I am on Rails, Postgres and Docker!')"
-  rails runner "Article.save"
+  #rails runner "Article.save"
 fi
 
 
