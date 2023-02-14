@@ -21,6 +21,7 @@ default: &default
   username: postgres
   password: password
   pool: 5
+  port: 5433
 
 development:
   <<: *default
