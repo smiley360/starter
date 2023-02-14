@@ -5,7 +5,7 @@ set -e
 rm -f /myapp/tmp/pids/server.pid
 
 echo "sleep for waiting for postgres to up"
-sleep 10
+sleep 25
 echo "done sleeping"
 if [ ! -f /myapp/db.created ]; then
   echo "calling into db:create"
