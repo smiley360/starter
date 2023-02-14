@@ -22,6 +22,11 @@ if [ ! -f /myapp/db.created ]; then
   echo "creating article 2"
   rails runner "Article.create(title: 'This is my 2nd title', body: 'I am happy about that')"
   #rails runner "Article.save"
+
+  echo "***********************************************************"
+  echo "*  It is about to ready to rock and roll                  *"
+  echo "***********************************************************"
+
 fi
 
 
