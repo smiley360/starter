@@ -1,14 +1,21 @@
 #!/bin/bash
 
-# first run the very first time to build everything
-docker compose up 
+# Start the services in the background
+docker-compose up -d
 
-# shut down all dockers
-docker compose down
+# Wait for the services to come up
+while [ "$(docker-compose ps -q | wc -l)" -lt "$(docker-compose config --services | wc -l)" ]
+do
+  echo "checking\r"
+  sleep 5
+done
+
+# Stop and remove the containers
+echo "Tear it down"
+docker-compose down
 rm db.created
 
 declare -a image_array
-
 # Store all Docker images with the specified name in an array
 image_array=($(docker images | grep -w "starter-web" | awk '{print $3}'))
 image_array+=($(docker images | grep -w "postgres" | awk '{print $3}'))
@@ -36,4 +43,8 @@ else
   echo "$new_line" >> "$file"
 fi
 
+#run the container again
+echo "**************************************\r"
+echo "**  final run                       **\r"
+echo "**************************************\r"
 docker compose up &
