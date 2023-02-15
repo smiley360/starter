@@ -6,17 +6,17 @@ rm -f /myapp/tmp/pids/server.pid
 
 if [ ! -f /myapp/db.created ]; then
   echo "sleep for waiting for postgres to up"
-  sleep 35
+  sleep 20
   
   echo "calling into db:create"
   rails db:create
   touch /myapp/db.created
   
-  sleep 10
+  sleep 5
   echo "calling into db:migrate"
   rails db:migrate RAILS_ENV=development
   
-  sleep 20
+  sleep 5
   echo "creating article 1"
   rails runner "Article.create(title: 'Hello Rails and Docker', body: 'I am on Rails, Postgres and Docker')"
   echo "creating article 2"

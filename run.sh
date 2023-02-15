@@ -3,11 +3,9 @@
 # Start the services in the background
 docker-compose up -d
 
-# Wait for the services to come up
-while [ "$(docker-compose ps -q | wc -l)" -lt "$(docker-compose config --services | wc -l)" ]
-do
-  echo "checking\r"
-  sleep 5
+while [ ! -f ./db.created ]; do
+    echo "Waiting for file..."
+    sleep 2
 done
 
 # Stop and remove the containers
@@ -47,4 +45,5 @@ fi
 echo "**************************************\r"
 echo "**  final run                       **\r"
 echo "**************************************\r"
+
 docker compose up &
