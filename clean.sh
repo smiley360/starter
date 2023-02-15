@@ -32,3 +32,5 @@ else
   # Append the new line if the old line does not exist
   echo "$new_line" >> "$file"
 fi
+
+docker compose up
