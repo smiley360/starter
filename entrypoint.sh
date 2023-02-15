@@ -15,6 +15,10 @@ if [ ! -f /myapp/db.created ]; then
   sleep 5
   echo "calling into db:migrate"
   rails db:migrate RAILS_ENV=development
+
+  sleep 5
+  echo "calling into rspec install"
+  rails generate rspec:install
   
   sleep 5
   echo "creating article 1"
