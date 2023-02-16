@@ -8,11 +8,13 @@ if [ ! -f /myapp/db.created ]; then
   echo "sleep for waiting for postgres to up"
   sleep 20
   
+  echo "create db.created"
+  touch /myapp/db.created
+
   echo "calling into db:create"
   rails db:create
-  touch /myapp/db.created
   
-  sleep 5
+  sleep 10
   echo "calling into db:migrate"
   rails db:migrate RAILS_ENV=development
 
